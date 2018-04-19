@@ -6,6 +6,7 @@
 不足：
 * 报警没有针对人 —— 通过服务治理服务可以得到对应的owner和master以及值班同学
 * 通hcat进行查看没有仅仅有错误日志内容，但是没有日志来源（时间，服务器，应用名称（进程号））
+* 如果能增加ID或者traceID会更好些
 
 ## 服务治理
 需要提供通过服务名称或者服务ID，运行hostIP，ManagerPort，得到（version，owner，master，git）
