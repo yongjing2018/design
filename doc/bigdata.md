@@ -57,6 +57,7 @@
 需要针对性voucher和voucher_detail进行重构，采用groupID分库后，就仅仅针对voucher_detail进行时间分表。（注：这里的时间是写入时间）
 至于根据shopID进行分区对业务是透明的。
 
+### 写入时间分表
 针对写入时间进行分表需要涉及到的问题：
 1. 原有的接口需要兼容，采用默认时间2017或者2018或者查询和删除的时候都进行处理；（可以仅仅是2018）
 
@@ -72,5 +73,9 @@
 
 4. 后续维护问题： 如果增加字段，所有按时间划分的表都需要增加
 
-
+### 代码修改
+1. 需要voucher以及voucher_detail的操作Command和Query进行ChainVoucherDetailMapper添加ChainVoucherDetailExMapper进行封装
+2. 添加时候，需要同系统生成createTime，并获取yyyy然后写入到表
+3. 修改或删除的时候需要提供ID和createTime
+4. 查询时候，需要查询范围时间yyyy， 如果没有默认2018
 
