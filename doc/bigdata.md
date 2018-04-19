@@ -53,12 +53,12 @@
 需要针对性voucher和voucher_detail进行重构，采用groupID分库后，就仅仅针对voucher_detail进行时间分表。（注：这里的时间是写入时间）
 至于根据shopID进行分区对业务是透明的。
 
-### 写入时间分表
+### voucherDate时间分表
 1. 原有的接口需要兼容，采用默认时间2017或者2018或者查询和删除的时候都进行处理；（可以仅仅是2018）
 2. 原有的数据进行分开： 
     2.1 需要新建分表
     2.2 将数据导入到分表 
-    （并启动同步最近修改数据，根据actionTime分段读取数据，然后将结果根据createTime写入/更新到表）
+    （并启动同步最近修改数据，根据actionTime分段读取数据，然后将结果根据voucherDate写入/更新到表）
     2.3 停止服务
     2.4 更新服务
 3. 数据ES同步问题： 每增加一个表都需要调整同步配置，可以针对时间表进行特殊的分割 例如:voucher_detail#2018， 为了更好的使用open和close，所以保持index和type是一致的
@@ -66,7 +66,7 @@
 
 ### 代码修改
 1. 需要voucher以及voucher_detail的操作Command和Query进行ChainVoucherDetailMapper添加ChainVoucherDetailExMapper进行封装
-2. 添加时候，需要同系统生成createTime，并获取yyyy然后写入到表
-3. 修改或删除的时候需要提供ID和createTime
+2. 添加时候，需要同系统生成voucherDate，并获取yyyy然后写入到表
+3. 修改或删除的时候需要提供ID和voucherDate
 4. 查询时候，需要查询范围时间yyyy， 默认2018
 
