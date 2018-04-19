@@ -68,5 +68,5 @@
 1. 需要voucher以及voucher_detail的操作Command和Query进行ChainVoucherDetailMapper添加ChainVoucherDetailExMapper进行封装
 2. 添加时候，需要同系统生成createTime，并获取yyyy然后写入到表
 3. 修改或删除的时候需要提供ID和createTime
-4. 查询时候，需要查询范围时间yyyy， 如果没有默认2018
+4. 查询时候，需要查询范围时间yyyy， 默认2018
 
