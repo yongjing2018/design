@@ -5,6 +5,7 @@
 
 ## 设计方案
 ![Mysql2Es导入](./images/Mysql2Es导入.png)
+PS：配置的线程数不可以随便修改，如果线程修改，可以配置统一时间点进行更新
 
 ### 第1步 批量高并发导入 
   根据createTime进行并发insert,并记录最大的insertDs， where createTime>insertDs；
