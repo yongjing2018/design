@@ -1,8 +1,11 @@
 # mysql2es 数据从mysql导入到es
 
+## 背景
 主要通过针对mysql的表导入es中index.type中，es可以采用默认的mapping设置. 
 
-## 处理步骤
+## 设计方案
+![Mysql2Es导入](./images/Mysql2Es导入.png)
+
 ### 第1步 批量高并发导入 
   根据createTime进行并发insert,并记录最大的insertDs， where createTime>insertDs；
   
