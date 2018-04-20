@@ -23,6 +23,6 @@
 insert into dstTable(field1,field2,...) 
 select v1,v2,... 
 from srcTable 
-where activeTime>ds and activeTime<ds2
+where activeTime>=ds and activeTime<ds2
   and createTime>=20180000 and createTime<20190000
 ```
