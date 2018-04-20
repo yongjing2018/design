@@ -15,3 +15,14 @@
 * 根据actionTime进行同步最新需要记录where actionTime>lastDs 
 
 * 在并行下可能会涉及到对应的乱序问题，所以需要针对Thread进行Hash队列化处理，即同样的ID总由一个固定的线程处理
+
+
+## 分表的数据同步
+可以采用shell脚本，采用时间点切片ds1-ds2，进行
+``` sql
+insert into dstTable(field1,field2,...) 
+select v1,v2,... 
+from srcTable 
+where activeTime>ds and activeTime<ds2
+  and createTime>=20180000 and createTime<20190000
+```
