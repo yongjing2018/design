@@ -5,13 +5,13 @@
 
 ## 设计方案
 ![Mysql2Es导入](./images/Mysql2Es导入.png)
-PS：配置的线程数不可以随便修改，如果线程修改，可以配置统一时间点进行更新
+* PS：如果线程数发生修改，启动重启后会取最小更新的时间
+* 数据写入采用，直接PUT（存在就更新，不存在就插入）
 
 ### 第1步 批量高并发导入 
   根据createTime进行并发insert,并记录最大的insertDs， where createTime>insertDs；
   
 ### 第2步 实时增量同步
 * 根据actionTime进行同步最新需要记录where actionTime>lastDs 
->  2.1 actionTime > insertDs（插入）
->  2.2 actionTime <= insertDs(更新)
+
 * 在并行下可能会涉及到对应的乱序问题，所以需要针对Thread进行Hash队列化处理，即同样的ID总由一个固定的线程处理
