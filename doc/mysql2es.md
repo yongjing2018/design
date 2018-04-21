@@ -63,3 +63,9 @@ where activeTime>=ds and activeTime<ds2
 * META 主要是那些Job分配给那些Worker
 * SERV 主要由Master和Worker以及服务的状态
 
+## 平台引擎
+1. 目前有两种方式1种就是上面提到的master，worker的方式，另一用方式就是采用storm的方式
+2. 直接借助storm的平台，提交topology，仅仅topology的参数有所不同而已。
+3. 通过storm的方式需要解决仅仅编写manager做界面和管理提交任务即可，具体任务的运行情况可以直接查看storm的执行
+
+
