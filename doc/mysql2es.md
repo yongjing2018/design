@@ -53,3 +53,8 @@ where activeTime>=ds and activeTime<ds2
 1. 实时性稍弱，频次一般设置为1s或者30s或者60s或者15m或者1h等
 2. 对从库稍有压力，增加额外的范围量
 
+## 平台设计
+![同步平台界面](./images/同步平台界面.png)
+
+## 实体关系
+![DataX实体关系](./images/DataX实体关系.png)
