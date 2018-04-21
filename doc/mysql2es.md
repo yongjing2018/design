@@ -58,3 +58,8 @@ where activeTime>=ds and activeTime<ds2
 
 ## 实体关系
 ![DataX实体关系](./images/DataX实体关系.png)
+
+### ZK中的数据结构
+* META 主要是那些Job分配给那些Worker
+* SERV 主要由Master和Worker以及服务的状态
+
