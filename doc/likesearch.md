@@ -13,10 +13,20 @@
 ### 1. 分词函数
 ### 2. 字符串分词的所有组合
 ```
-int len = str.size();
-for(int k=1;k<=len;++k) {
-  for(int i=0;i<len;i+=k) {
-    subx = str.substr(i,k);
-  }
+public class TermTest {
+    @Test
+    public void termSplit() {
+        String str = "库存武川莜面1233abc";
+        int len = str.length();
+        for(int k=1;k<=len;++k) {
+            for(int i=0;i<len;++i) {
+                if(i+k>len) break;
+                //System.out.println(""+i+","+k);
+                String subx = str.substring(i,i+k);
+                System.out.println(subx);
+            }
+        }
+
+    }
 }
 ```
